@@ -251,6 +251,9 @@ body.ingame #mpBox{display:none!important}
 #gResOv{position:fixed;inset:0;z-index:24;display:none;align-items:center;justify-content:center;background:rgba(0,6,16,.35)}
 #gResOv.show{display:flex}
 #gResOv .panel{text-align:center;min-width:300px}
+/* (v2.17) the backup window and a question over the settings: dim what is behind and make the window solid, so the two don't mix */
+#bakOv,#settings.show~#askOv{background:rgba(6,8,14,.6)}
+#bakOv .panel,#settings.show~#askOv .panel{background:#1d2333}
 #grBody{font-size:16px;line-height:1.9;margin:6px 0 14px}
 #bReel{right:calc(30px + var(--sr,0px));bottom:118px;width:auto;height:66px;padding:0 26px;border-radius:33px;font-size:17px;display:none;z-index:14;border-color:#7fd1ff;background:rgba(40,110,170,.45)}
 #bReel.show{display:block}#bReel.bite{background:rgba(230,80,60,.6);border-color:#ffd0b0;box-shadow:0 0 22px rgba(255,120,90,.7)}
@@ -381,11 +384,19 @@ body.ingame #mpBox{display:none!important}
   <div class="row"><span data-t="invertY"></span><div class="seg" id="sInv"></div></div>
   <div class="row"><span data-t="language"></span><div class="seg" id="sLang"></div></div>
   <div class="row" id="sPartnerRow"><span data-t="partnerSet"></span><div class="seg"><span id="sPartner" style="margin-right:10px"></span><button id="sPartnerClr" data-t="partnerClr"></button></div></div>
+  <div class="row" id="sBackupRow"><span data-t="backupRow"></span><div class="seg"><button id="sBackup" data-t="backupBtn"></button><button id="sRestore" data-t="restoreBtn"></button></div></div>
+  <div class="row" style="justify-content:flex-end;margin-top:-4px"><span id="sBackupLast" style="font-size:12px;opacity:.65"></span></div>
   <button class="btn p" id="setBack" data-t="back"></button>
+</div></div>
+<div class="ov" id="bakOv"><div class="panel" style="min-width:420px;max-width:92vw">
+  <div class="pt" id="bakH"></div>
+  <div id="bakT" style="font-size:13px;opacity:.85;line-height:1.6;margin-bottom:8px;white-space:pre-line"></div>
+  <textarea id="bakCode" rows="4" style="width:100%;font-size:16px;-webkit-user-select:text;user-select:text;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px;resize:none;word-break:break-all"></textarea>
+  <div class="row" style="justify-content:center;gap:12px"><button class="btn p" id="bakGo" style="margin:0"></button><button class="btn" id="bakBack" data-t="back" style="margin:0"></button></div>
 </div></div>
 <div class="ov" id="askOv"><div class="panel" style="min-width:360px;text-align:center">
   <div class="pt" id="askH"></div>
-  <div id="askT"></div>
+  <div id="askT" style="white-space:pre-line;line-height:1.6"></div>
   <div class="row" style="justify-content:center;gap:12px"><button class="btn p" id="askYes" style="margin:0"></button><button class="btn" id="askNo" style="margin:0"></button></div>
 </div></div>
 <div class="ov" id="lhOv"><div class="panel" style="min-width:360px">
@@ -412,6 +423,6 @@ body.ingame #mpBox{display:none!important}
 <div class="ov" id="mapOv"><div id="mapWrap"><canvas id="mapCv"></canvas><div id="mapInfo"></div>
   <div id="mapTp"><span id="mapTpT"></span><button id="mapTpGo" class="btn p" data-t="go2"></button><button id="mapTpNo" class="btn" data-t="cancel"></button></div><button class="ib" id="mapClose" style="pointer-events:auto"><svg viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></div>
 <div id="loading"><div id="loadLogo">风语之岛</div><div id="loadBar"><div id="loadFill"></div></div><div id="loadText"></div></div>
-<script src="game.js?v=2.16"></script>
+<script src="game.js?v=2.17"></script>
 </body>
 </html>
